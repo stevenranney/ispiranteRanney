@@ -1,0 +1,9 @@
+Package: ispiranteRanney
+Version: 0.1.0
+Date: 2014-01-07
+Title: Functions to analyze Ispirante data
+Author: Steven Ranney
+Maintainer: Steven H. Ranney <steven.ranney@gmail.com>
+Depends: R (>= 3.1.2), ggplot2, scales, forecast, zoo, timeDate
+Description: Explore help-desk ticket data for ispirante.
+License: GPL-3
