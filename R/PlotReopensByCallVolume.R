@@ -36,7 +36,7 @@ function # Create a plot of the reopens by call volume
   volData <- volData[order(volData$assignedDate), ]
   
   #aggregate scores by Date
-  reopensData <- aggregate(dF$reopens, by = list(dF$assignedDate), mean, na.rm = T)
+  reopensData <- aggregate(dF$reopens, by = list(dF$assignedDate), sum, na.rm = T)
   names(reopensData) <- c("assignedDate", "meanReopens")
   reopensData <- reopensData[order(reopensData$assignedDate), ]
   
