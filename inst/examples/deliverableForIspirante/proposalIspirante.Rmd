@@ -255,8 +255,7 @@ Estimated cost for creating the `ispiranteRanney` functions, detailed help files
 
 | Item                                 | Hours     | Cost                |  
 |-------------------------------------:|----------:|--------------------:|
-|Data exploration and function writing |   10      |\$`r 10*85`.00       |
-|Writing functions and documentation   |   35      |\$`r 35*85`.00       |
+|Writing functions and documentation   |   45      |\$`r 45*85`.00       |
 |**Total**                             | **45.00** |\$**`r 45.00*85`.00**|
 
 # References
