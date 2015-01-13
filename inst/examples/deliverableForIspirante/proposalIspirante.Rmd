@@ -249,8 +249,6 @@ In the help-desk ticket data, `date` is effectively a categorical variable.  As 
 
 Reopens by date is an important relationship to evaluate because by looking at call volumes, agent effectiveness, and reopens by date, a customer service manager can start to put together a full picture of how effective and efficient an agent, a group of agents, or their entire help desk can be.
 
-### PlotReopensByPriority()
-
 # Total Estimated Cost
 
 Estimated cost for creating the `ispiranteRanney` functions, detailed help files, and final packaging into a `.zip` file is:
