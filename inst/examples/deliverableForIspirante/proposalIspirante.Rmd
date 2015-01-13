@@ -234,28 +234,20 @@ With the sample data provided,  bits of these hypotheses play out in the regress
 
 The number of reopens of a ticket is the number of times that a "solved" ticket has been reopened.  Reopens likely have a negative affect on a number of other numeric values (e.g., `satisfcation_score` and resolution time, discussed previously).  However, simply understanding how the number of reopens changes with different categoriacal variables can help a manager understand how the number of reopens changes by `agent`, `call volume`, `date`, `day`, and `priority` level.
 
-### PlotReopensByAgent()
+The number of reopens of a help-desk ticket will be visualised with functions:
 
-`PlotReopensByAgent()` needs only the data frame argument to work.  However, like many of the other functions previously discussed, the `"value"` argument can be provided with either `assigned` or `created`.  
+* `PlotReopensByAgent()`
+* `PlotReopensByCallVolume()`
+* `PlotReopensByDate()`
+* `PlotReopensByPriority()`
 
+Plotting the reopens by `assignee_name` will help customer-service managers understand how efficient each help-desk agent is.  Boxplots of the reopens by agent will indicate which agents routinely resolve tickets the first time (i.e., `reopens = 0`) and which agents require more time (i.e,. `reopens > 0`).  Visulalizations will provide a horizontal line of the mean number of reopens for the entire dataset as well as the boxplot by agent.
 
-`PlotReopsnByAgent()` produces two plots in one plot window.  The top plot is a plot of the total number of calls for each agent over the entirety of the dataset.  The lower plot is a box plot of the number of reopens for each agent.  Here, the red line is the mean number of reopens across the entirety of the data set nad the red points are outliers for each agent name (see `?PlotReopensByAgent()` for more information).
+Plotting the number of reopens as a function of call volume will allow `ispiranteRanney` to produce a `lm()` model to quantify the relationship between the two numeric values.  Managers will be able to see trends in the data.  Questions like *if call volume goes up, what happens to the number of reopens*?  By plotting `reopens` as a function of call volume, managers can see for themselves if things get "missed" when help-desk agents are busy.  From that, managers can determine staffing levels and, if necessary, have agents "on-call" to help out.
 
-Here, it appears as though most agents have median `reopen` values that are 0, very close to 0, or at least less than the mean number of reopens for the entire dataset.  This plot is insightful, however, because agents with a high number of reopens can be identified along with the number of calls they took over all of the data.  For example, `Connor Hays`, even though he took close to 250 calls over during the time covered in the data set, still has a median number of reopens close to 0.  This suggests then that `Connor Hays` is an efficient work who knows how to resolve customer issues.  Meanwhile, `Christopher White` may still be in training as his range of `reopens` is quite high yet his call volume (top plot) is close to zero, implying that he may still be learning how to resolve customer issues.
+In the help-desk ticket data, `date` is effectively a categorical variable.  As a result, while we can't create a linear model of the number of reopens as a function of date, we can plot boxplots and look for differences by date.  
 
-### PlotReopensByCallVolume()
-`Reopens` and `call volume` are both numeric values.  As a result, we can plot them against each other and evaluate their relationship with a linear model.  Like other functions that deal with dates, the date argument `"value"` can be added here though the default is `assigned`.
-
-As we would expect, as call volume increases, the red linear regression line suggests that the number of reopens increases, too.  The reason for this is that at higher call volumes, there are no zero values for reopens.  From this, it's clear that at higher call volumes, things get "missed" while resolving customer issues.  As a result, it may be worth while to insist that help-desk agents take as much time with customer issues as they do during lower call-volume days.
-
-### PlotReopensByDate()
-In the help-desk ticket data, `date` is effectively a categorical variable.  As a result, while we can't create a linear model of the number of reopens as a function of date, we can plot boxplots and look for differences by date.  The `PlotReopensByDate()` requires only one argument, the data.
-
-Like previous temporally-broad boxplots, this looks messy.  Like other date functions discussed above however, we can limit the date range of these data.  Lets look at just the week of June:
-
-Clearly, there aren't many tickets reopened during the course of this week.  From the looks of these data, there was only one ticket that was reopened on `June 2`, `June 4`, and `June 5`.  The date of `June 1` likely had no calls thus resulting in, effectively, no data being shown for that date.
-
-This is an important relationship to evaluate because by looking at call volumes, agent effectiveness, and reopens by date, a customer service manager can start to put together a full picture of how effective and efficient an agent, a group of agents, or their entire help desk can be.
+Reopens by date is an important relationship to evaluate because by looking at call volumes, agent effectiveness, and reopens by date, a customer service manager can start to put together a full picture of how effective and efficient an agent, a group of agents, or their entire help desk can be.
 
 ### PlotReopensByPriority()
 
