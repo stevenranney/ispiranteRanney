@@ -50,11 +50,6 @@ function # Create a plot of the resolution time by date
   volData <- merge(tmpDate, volData, by = "assignedDate", all = T)
   volData$totalCalls[is.na(volData$totalCalls)] <- 0
   
-  
-#  if(length(which(is.na(dF$value))) == nrow(dF)){
-#    stop(print("Data frame has no data to display"))
-#    } else {
-  
   ##details<< This functions converts dates that are not represented in the data
   ## frame to \code{0} values.  However, \code{0} value dates are only 'filled in;'
   ## that is, the function only fills in dates.  It does not extend the date field.

@@ -91,7 +91,6 @@ function # Create a plot of the number of reopens by agent
   p2 <- volPlot + geom_line(colour = "navyblue", size = 1.01) + 
         labs(ylab("Call volume (x10)"))# + labs(xlab(xlabel))# + labs(ggtitle("Resolution time"))
 
-#  p2 <- p2 + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
   p2 <- p2 + theme(axis.ticks.x = element_blank(), axis.text.x = element_blank(), 
                    axis.title.x = element_blank())  
   allPlots <- PlotMultipleObjects(p2, p1)

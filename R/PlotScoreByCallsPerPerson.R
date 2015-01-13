@@ -79,7 +79,7 @@ function # Create a plot of the score by calls/person
   #Create a linear model of score as a function of wait time (hours)
   lmMod <- lm(allData$meanScore~allData$callsPerPerson) 
 
-  g <- ggplot(allData, aes(x = callsPerPerson, y = meanScore))#, fill = dayOfWeek))
+  g <- ggplot(allData, aes(x = callsPerPerson, y = meanScore))
 
     p1 <- g + geom_point() + labs(ylab(ylabel)) + labs(xlab(xlabel)) +  
               geom_abline(intercept=lmMod$coefficients[1], slope=lmMod$coefficients[2], 

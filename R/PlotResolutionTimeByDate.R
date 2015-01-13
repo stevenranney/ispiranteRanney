@@ -57,12 +57,6 @@ function # Create a plot of the resolution time by date
   tmp <- merge(tmp, tmpDate, by = "assignedDate", all = T)
   tmp <- tmp[order(tmp$assignedDate), ]
   
-  #aggregate mean resolution time by date
-#  aggData <- aggregate(tmp$value/60, by = list(tmp$assignedDate), mean)
-#  names(aggData) <- c("assignedDate", "value")
-#  aggData <- aggData[order(aggData$assignedDate), ]
-  
-  
   if(length(which(is.na(dF$value))) == nrow(dF)){
     stop(print("Data frame has no data to display"))
     } else {
