@@ -10,8 +10,7 @@ output:
     fig_caption: yes
 ---
 
->*The best experiments require no statistics.*   
-                        *--- Al Zale, USGS/Montana Cooperative Fishery Research Unit*
+
 ```{r global_options, include=FALSE}
 library(knitr)
 opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/', warning=FALSE, message=FALSE)
@@ -23,8 +22,16 @@ library(knitcitations)
 options("citation_format" = "pandoc")
 bib <- read.bibtex("documentation.bib")
 ```
+___
 # Introduction
 
+
+> *Essentially, all [statistical] models are wrong, but some are useful.*
+> *---George E. P. Box*
+
+> *The best experiments require no statistics.*   
+> *--- Al Zale, USGS/Montana Cooperative Fishery Research Unit*
+                                                
 Data analysis is normally undertaken by those with training in statistical analyses [@burnhamAndAnderson; @Anderson].  Statistical analyses, and their resulting metrics (e.g., *p*-values, slope nad intercept values, parameter estimates, R^2^ values) are often misinterpreted by those that posess none or little statistical training.  In some cases, reliance on the output from stastical analyses may "cloud" a person's judgement; lack of training may let someone infer from a *significant* *p*-value that a relationship exists when, in reality, the results were a result of spurious data.
 
 I propose to deliver to [ispirante](http://www.grandsla.com) the *ispiranteRanney* pckage, written in response to an onine advertisement and subsequent webinar with Stefano Spada.  *ispiranteRanney* will have several functions to help [ispirante](http://www.grandsla.com) customers visualize, understand, and gain insights into their data.  I will write the package---and the functions---with minimal statistical analyses to allow for a deeper, more thorough customer understanding.
@@ -129,7 +136,7 @@ y <- x+rnorm(10, 0, .5)
 sim <- data.frame(x, y)
 sim$Class <- "1"
 
-x <- 1:10
+x <- sample(1:10, 10, replace = F)
 y <- x+rnorm(10, 0, 30)
 sim1 <- data.frame(x, y)
 sim1$Class <- "2"
@@ -291,13 +298,24 @@ ForecastHelpDeskCalls(dF, 14)
 
 ```
 
-`ForecastHelpDeskCalls()` will use a 14-order model (e.g., a 14-day moving average) to predict the number of calls received.  Dates that do not appear in the dataset will be assumed to have zero calls.  With the function, users could easily predict out to whatever date they are interested, though, if data is sparse towards the end of the dataset, predictions will be of little value:
+`ForecastHelpDeskCalls()` will use a 14-order model (e.g., a 14-day moving average) to predict the number of calls received.  Dates that do not appear in the dataset will be assumed to have zero calls.  With the function, users could easily predict out to whatever date they are interested, though, if data is sparse towards the end of the dataset, predictions will be of little value.  
+
+`ForecasthelpDeskCalls()` will be able to predict out as far or as short as the user would like.  Indeed, narrow temporal windows would likely provide the most use.  However, monthly, quarterly, or even yearly predictions are possible.  Regardless, like any statistical model, models are only as good as the data they are based on.
+
 ```{r fig.cap = "Forecast values for the number of help-desk calls received in the next quarter from the end of the dataset."}
 #Predicting for the next quarter, from whatever is the final date of the dataset
 ForecastHelpDeskCalls(dF, 365/4)
 ```
 
+## Additional Proposed Functions
 
+Additional *behind the scenes* functions for data manipulation include:
+
+* `AssignDateAndDay()`, a function to convert either the `"assigned"` or "`created_at`" dates into the days of the week for use in higher-level functions that plot variables as a function of `day`; 
+* `ConvertSatisfactionScoreToNumber()`, discussed above, designed to convert character satisfaction values of `"Good"` or `"Bad"` to numeric values;
+* `PlotMultipleObjects()`, a function to plot to `ggplot` objects in the same window.  This function could easily be called to plot any two visualizations on top of each other, if this is a preferred feature.
+
+These functions would never need to be accessed by the user.  They are called from within the higher level functions on the principle of "don't repeat yourself."
 
 # Total Estimated Cost
 
